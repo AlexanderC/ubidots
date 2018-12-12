@@ -1,0 +1,33 @@
+{
+  "name": "ubidots",
+  "version": "1.0.0",
+  "description": "Unofficial Ubidots NodeJS API Client",
+  "main": "src/ubidots.js",
+  "scripts": {
+    "test": "$(npm bin)/mocha test --timeout 99999 --ui tdd --file test/_boot.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AlexanderC/ubidots.git"
+  },
+  "keywords": [
+    "IoT",
+    "Ubidots",
+    "SDK"
+  ],
+  "author": "AlexanderC <alexander.moldova@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/AlexanderC/ubidots/issues"
+  },
+  "homepage": "https://github.com/AlexanderC/ubidots#readme",
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^5.2.0"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "debug": "^4.1.0",
+    "merge-options": "^1.0.1"
+  }
+}
