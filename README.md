@@ -9,7 +9,7 @@ Node.js API Client for [Ubidots](https://ubidots.com)
 ## Installation
 
 ```bash
-npm install ubidots
+npm install ubidots-node
 ```
 
 ## Usage
@@ -17,7 +17,7 @@ npm install ubidots
 Initializing Library:
 
 ```javascript
-const Ubidots = require('ubidots');
+const Ubidots = require('ubidots-node');
 const client = Ubidots.create(Ubidots.ApiBase.Educational);
 
 // Authorize API with an API Key
@@ -69,7 +69,7 @@ For debugging purpose the [debug](https://www.npmjs.com/package/debug) npm modul
 Example of using the debug feature:
 
 ```bash
-DEBUG='ubidots:*' npm test
+DEBUG='ubidots-node:*' npm test
 ```
 
 ## Roadmap

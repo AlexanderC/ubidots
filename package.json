@@ -1,5 +1,5 @@
 {
-  "name": "ubidots",
+  "name": "ubidots-node",
   "version": "1.0.0",
   "description": "Unofficial Ubidots NodeJS API Client",
   "main": "src/ubidots.js",
