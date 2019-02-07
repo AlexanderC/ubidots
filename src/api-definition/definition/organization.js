@@ -16,6 +16,15 @@ module.exports = {
       active: true,
     },
   }),
+  generate: endpoint({
+    path: '/auth/tokens/organizations/{id}',
+    method: 'POST',
+    async populate(data) {
+      this.url = interpolate(this.url, { id: data.id });
+      this.data = data;
+      this.headers['X-Ubidots-ApiKey'] = data.apiKey;
+    },
+  }),
   list: endpoint({
     path: 'organizations',
   }),
