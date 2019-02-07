@@ -16,7 +16,7 @@ module.exports = {
       active: true,
     },
   }),
-  generate: endpoint({
+  generateToken: endpoint({
     path: '/auth/tokens/organizations/{id}',
     method: 'POST',
     async populate(data) {
