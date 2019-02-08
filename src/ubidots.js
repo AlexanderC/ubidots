@@ -10,7 +10,7 @@ class Ubidots {
   constructor(api) {
     this._api = api;
     this.token = null;
-    this.apiKey = null;
+    this.key = null;
 
     debug('namespaces', this.apis);
   }
@@ -25,7 +25,7 @@ class Ubidots {
     const { data: token } = await endpoint.call(apiKey);
 
     this.token = token;
-    this.apiKey = apiKey;
+    this.key = apiKey;
 
     debug('authorize', token);
 
@@ -46,7 +46,7 @@ class Ubidots {
       namespace,
       this._api[namespace],
       this.token,
-      this.apiKey
+      this.key
     );
   }
 

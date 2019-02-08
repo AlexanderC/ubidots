@@ -7,13 +7,13 @@ class Api {
    * @param {string} namespace
    * @param {*} endpoints
    * @param {string} token
-   * @param {string} apiToken
+   * @param {string} key
    */
-  constructor(namespace, endpoints, token, apiToken) {
+  constructor(namespace, endpoints, token, key) {
     this.namespace = namespace;
     this._endpoints = endpoints;
     this.token = token;
-    this.apiToken = apiToken;
+    this.key = key;
 
     debug(`endpoints:${this.namespace}`, this.endpoints);
   }
@@ -32,7 +32,7 @@ class Api {
       `${this.namespace}:${endpoint}`,
       this._endpoints[endpoint],
       this.token,
-      this.apiToken
+      this.key
     );
   }
 
@@ -45,8 +45,7 @@ class Api {
     return this._endpoints.hasOwnProperty(endpoint);
   }
 
-  /**
-   * Get the list of available API endpoints
+  /** Get the list of available API endpoints
    * @returns {string[]}
    */
   get endpoints() {

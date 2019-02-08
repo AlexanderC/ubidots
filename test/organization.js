@@ -28,7 +28,7 @@ suite('Ubidots.api("organization")', async function() {
       .api('organization')
       .endpoint('generateToken');
 
-    endpoint.apiToken = ubitodsApiKey;
+    endpoint.key = ubitodsApiKey;
     const response = await endpoint.call({ id: ORG.id, name: tokenName });
 
     expect(response.isError).to.be.false;

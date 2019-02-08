@@ -7,13 +7,13 @@ class Endpoint {
    * @param {string} name
    * @param {*} definition
    * @param {string} token
-   * @param {string} apiToken
+   * @param {string} key
    */
-  constructor(name, definition, token, apiToken) {
+  constructor(name, definition, token, key) {
     this.name = name;
     this.definition = definition;
     this.token = token;
-    this.apiToken = apiToken;
+    this.key = key;
 
     debug(`endpoint:${this.name}`, this.definition);
   }
@@ -27,7 +27,7 @@ class Endpoint {
     const opts = await this.definition.build(
       this.definition,
       this.token,
-      this.apiToken,
+      this.key,
       ...args
     );
 
