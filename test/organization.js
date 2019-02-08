@@ -20,6 +20,22 @@ suite('Ubidots.api("organization")', async function() {
     ORG.id = response.data.id;
   });
 
+  test('generateToken', async function() {
+    const { ubitods, ubitodsApiKey } = global;
+    const tokenName = `Test Token #${Date.now()}`;
+
+    const endpoint = await ubitods
+      .api('organization')
+      .endpoint('generateToken');
+
+    endpoint.key = ubitodsApiKey;
+    const response = await endpoint.call({ id: ORG.id, name: tokenName });
+
+    expect(response.isError).to.be.false;
+    expect(response.data.name).to.be.equal(tokenName);
+    expect(response.data.token).to.be.a('string');
+  });
+
   test('list', async function() {
     const { ubitods } = global;
 
