@@ -5,20 +5,22 @@ const MissingApiEndpointError = require('./error/missing-api-endpoint');
 class Api {
   /**
    * @param {string} namespace
-   * @param {*} endpoints 
+   * @param {*} endpoints
    * @param {string} token
+   * @param {string} apiToken
    */
-  constructor(namespace, endpoints, token) {
+  constructor(namespace, endpoints, token, apiToken) {
     this.namespace = namespace;
     this._endpoints = endpoints;
     this.token = token;
+    this.apiToken = apiToken;
 
     debug(`endpoints:${this.namespace}`, this.endpoints);
   }
 
   /**
    * Create endpoint instance
-   * @param {string} endpoint 
+   * @param {string} endpoint
    * @returns {Endpoint}
    */
   endpoint(endpoint) {
@@ -29,13 +31,14 @@ class Api {
     return new Endpoint(
       `${this.namespace}:${endpoint}`,
       this._endpoints[endpoint],
-      this.token
+      this.token,
+      this.apiToken
     );
   }
 
   /**
    * Check if api endpoint exists
-   * @param {string} endpoint 
+   * @param {string} endpoint
    * @returns {boolean}
    */
   exists(endpoint) {

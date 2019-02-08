@@ -135,6 +135,8 @@ package-lock.json
 !.vscode/launch.json
 !.vscode/extensions.json
 
+### JetBrains ###
+.idea
 
 # End of https://www.gitignore.io/api/macos,visualstudiocode,node,soliditytruffle
 

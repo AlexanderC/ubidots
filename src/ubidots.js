@@ -5,11 +5,12 @@ const MissingApiNamespaceError = require('./error/missing-api-namespace');
 
 class Ubidots {
   /**
-   * @param {*} api 
+   * @param {*} api
    */
   constructor(api) {
     this._api = api;
     this.token = null;
+    this.apiKey = null;
 
     debug('namespaces', this.apis);
   }
@@ -17,13 +18,14 @@ class Ubidots {
   /**
    * Authorize Ubidots client
    * @param {string} apiKey
-   * @returns {Ubidots} 
+   * @returns {Ubidots}
    */
   async authorize(apiKey) {
     const endpoint = this.api('auth').endpoint('obtainToken');
     const { data: token } = await endpoint.call(apiKey);
 
     this.token = token;
+    this.apiKey = apiKey;
 
     debug('authorize', token);
 
@@ -32,7 +34,7 @@ class Ubidots {
 
   /**
    * Create API instance
-   * @param {string} namespace 
+   * @param {string} namespace
    * @returns {Api}
    */
   api(namespace) {
@@ -43,13 +45,14 @@ class Ubidots {
     return new Api(
       namespace,
       this._api[namespace],
-      this.token
+      this.token,
+      this.apiKey
     );
   }
 
   /**
    * Check if api namespace exists
-   * @param {string} namespace 
+   * @param {string} namespace
    * @returns {boolean}
    */
   exists(namespace) {
@@ -74,7 +77,7 @@ class Ubidots {
 
   /**
    * Create an instance of Ubidots API Client
-   * @param {string} baseURL 
+   * @param {string} baseURL
    * @returns {Ubidots}
    */
   static create(baseURL = ApiBase.Industrial) {

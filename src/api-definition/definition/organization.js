@@ -19,9 +19,10 @@ module.exports = {
   generateToken: endpoint({
     path: '/auth/tokens/organizations/{id}',
     method: 'POST',
-    async populate(id}) {
+    useAPIKey: true,
+    async populate({ id, name }) {
       this.url = interpolate(this.url, { id });
-      this.data = data;
+      this.data = { name };
     },
   }),
   list: endpoint({
