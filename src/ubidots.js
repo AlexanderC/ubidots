@@ -6,11 +6,17 @@ const MissingApiNamespaceError = require('./error/missing-api-namespace');
 class Ubidots {
   /**
    * @param {*} api
+   * @param {object} opts
+   * @param {object} opts.backoff - backoff options
+   * @param {number} opts.backoff.retries - amount of retries
+   * @param {number} opts.backoff.minTimeout - minimum amount of time between retries
+   * @param {number} opts.backoff.factor - factor of the timeout between retries
    */
-  constructor(api) {
+  constructor(api, opts) {
     this._api = api;
     this.token = null;
     this.key = null;
+    this.opts = opts;
 
     debug('namespaces', this.apis);
   }
@@ -46,7 +52,8 @@ class Ubidots {
       namespace,
       this._api[namespace],
       this.token,
-      this.key
+      this.key,
+      this.opts
     );
   }
 
@@ -78,14 +85,38 @@ class Ubidots {
   /**
    * Create an instance of Ubidots API Client
    * @param {string} baseURL
+   * @param {object} opts
+   * @param {object} opts.backoff - backoff options
+   * @param {number=} opts.backoff.retries - amount of retries
+   * @param {number=} opts.backoff.minTimeout - minimum amount of time between retries
+   * @param {number=} opts.backoff.factor - factor of the timeout between retries
    * @returns {Ubidots}
    */
-  static create(baseURL = ApiBase.Industrial) {
+  static create(baseURL = ApiBase.Industrial, opts = { backoff: {}}) {
     debug('client', baseURL);
 
     const api = apigen(baseURL);
 
-    return new this(api);
+    const mergedOpts = {
+      backoff: {}
+    };
+
+    Object.assign(mergedOpts.backoff, this.DEFAULT_CONFIG.backoff, opts.backoff);
+
+    return new this(api, mergedOpts);
+  }
+
+  /**
+   * @returns {{backoff: {minTimeout: number, retries: number, factor: number}}}
+   */
+  static get DEFAULT_CONFIG() {
+    return {
+      backoff: {
+        retries: 5,
+        factor: 1.4,
+        minTimeout: 500
+      }
+    };
   }
 }
 
