@@ -1,3 +1,5 @@
+const mergeOptions = require('merge-options');
+
 const { ApiBase, api: apigen } = require('./api-definition');
 const Api = require('./api');
 const debug = require('./utils/debug')(__filename);
@@ -97,11 +99,7 @@ class Ubidots {
 
     const api = apigen(baseURL);
 
-    const mergedOpts = {
-      backoff: {}
-    };
-
-    Object.assign(mergedOpts.backoff, this.DEFAULT_CONFIG.backoff, opts.backoff);
+    const mergedOpts = mergeOptions(this.DEFAULT_CONFIG, opts);
 
     return new this(api, mergedOpts);
   }
