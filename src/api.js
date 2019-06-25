@@ -17,7 +17,7 @@ class Api {
     this.key = key;
     this.opts = opts;
 
-    debug(`endpoints:${this.namespace}`, this.endpoints);
+    debug(`endpoints:${ this.namespace }`, this.endpoints);
   }
 
   /**
@@ -31,11 +31,11 @@ class Api {
     }
 
     return new Endpoint(
-      `${this.namespace}:${endpoint}`,
+      `${ this.namespace }:${ endpoint }`,
       this._endpoints[endpoint],
       this.token,
       this.key,
-      this.opts
+      this.opts,
     );
   }
 

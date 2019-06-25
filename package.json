@@ -1,10 +1,12 @@
 {
   "name": "ubidots-node",
-  "version": "1.0.1",
+  "version": "1.2.0",
   "description": "Unofficial Ubidots NodeJS API Client",
   "main": "src/ubidots.js",
   "scripts": {
-    "test": "$(npm bin)/mocha test --timeout 99999 --ui tdd --file test/_boot.js"
+    "test": "$(npm bin)/mocha test --timeout 99999 --ui tdd --file test/_boot.js",
+    "lint": "$(npm bin)/eslint src",
+    "lint-staged": "$(npm bin)/lint-staged"
   },
   "repository": {
     "type": "git",
@@ -23,12 +25,29 @@
   "homepage": "https://github.com/AlexanderC/ubidots#readme",
   "devDependencies": {
     "chai": "^4.2.0",
-    "mocha": "^5.2.0"
+    "mocha": "^5.2.0",
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.9.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "husky": "^2.3.0",
+    "lint-staged": "^8.1.7"
   },
   "dependencies": {
     "axios": "^0.19.0",
     "debug": "^4.1.0",
     "merge-options": "^1.0.1",
     "promise-retry": "^1.1.1"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "eslint --fix",
+      "git add"
+    ]
   }
 }

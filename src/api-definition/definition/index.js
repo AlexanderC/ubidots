@@ -7,7 +7,11 @@ const variable = require('./variable');
 const utils = require('./utils');
 
 module.exports = {
-  auth, organization, user, 
-  datasource, device, variable,
+  auth,
+  organization,
+  user, 
+  datasource,
+  device,
+  variable,
   utils,
 };

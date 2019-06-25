@@ -26,7 +26,7 @@ class Response {
     const data = this._response.data || {};
     const processor = this.endpoint.definition.process;
 
-    if (processor && typeof processor == 'function') {
+    if (processor && typeof processor === 'function') {
       return processor(data);
     }
 
@@ -54,7 +54,7 @@ class Response {
 
     return new ApiError(
       this.endpoint,
-      this._error || { response: this._response }
+      this._error || { response: this._response },
     );
   }
 

@@ -5,7 +5,7 @@ class MissingApiNamespaceError extends BaseError {
    * @param {string} namespace 
    */
   constructor(namespace) {
-    super(`Missing API namespace "${namespace}"`);
+    super(`Missing API namespace "${ namespace }"`);
   }
 }
 

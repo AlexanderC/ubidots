@@ -6,7 +6,7 @@ class MissingApiEndpointError extends BaseError {
    * @param {string} endpoint 
    */
   constructor(namespace, endpoint) {
-    super(`Missing API endpoint "${namespace}:${endpoint}"`);
+    super(`Missing API endpoint "${ namespace }:${ endpoint }"`);
   }
 }
 
