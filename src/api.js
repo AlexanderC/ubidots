@@ -8,12 +8,14 @@ class Api {
    * @param {*} endpoints
    * @param {string} token
    * @param {string} key
+   * @param {object} opts
    */
-  constructor(namespace, endpoints, token, key) {
+  constructor(namespace, endpoints, token, key, opts) {
     this.namespace = namespace;
     this._endpoints = endpoints;
     this.token = token;
     this.key = key;
+    this.opts = opts;
 
     debug(`endpoints:${this.namespace}`, this.endpoints);
   }
@@ -32,7 +34,8 @@ class Api {
       `${this.namespace}:${endpoint}`,
       this._endpoints[endpoint],
       this.token,
-      this.key
+      this.key,
+      this.opts
     );
   }
 

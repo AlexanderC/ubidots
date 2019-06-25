@@ -26,8 +26,9 @@
     "mocha": "^5.2.0"
   },
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.19.0",
     "debug": "^4.1.0",
-    "merge-options": "^1.0.1"
+    "merge-options": "^1.0.1",
+    "promise-retry": "^1.1.1"
   }
 }
