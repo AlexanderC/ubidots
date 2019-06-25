@@ -40,16 +40,12 @@ class Endpoint {
     let response = null;
 
     try {
-      const result = await promiseRetry(this.opts.backoff, (retry, number) => {
+      const result = await promiseRetry(this.opts.backoff, async (retry, number) => {
         debug(`call:${ name }:try:${ number }`, opts);
 
-        return axios.request(opts)
-          .then(response => {
-            if (response.status === 429) {
-              retry(response);
-            }
-            return response;
-          });
+        const response = await axios.request(opts);
+
+        return response.status === 429 ? retry(response) : response;
       });
 
       response = new Response(this, opts, null, result);

@@ -94,7 +94,7 @@ class Ubidots {
    * @param {number=} opts.backoff.factor - factor of the timeout between retries
    * @returns {Ubidots}
    */
-  static create(baseURL = ApiBase.Industrial, opts = { backoff: {}}) {
+  static create(baseURL = ApiBase.Industrial, opts = Ubidots.DEFAULT_CONFIG) {
     debug('client', baseURL);
 
     const api = apigen(baseURL);
@@ -112,7 +112,7 @@ class Ubidots {
       backoff: {
         retries: 5,
         factor: 1.4,
-        minTimeout: 500
+        minTimeout: 500,
       }
     };
   }
