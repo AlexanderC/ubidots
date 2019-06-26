@@ -50,4 +50,19 @@ module.exports = {
       this.url = interpolate(this.url, { id });
     },
   }),
+  'history-list': endpoint({
+    path: 'data/stats/resample',
+    method: 'POST',
+    data: {
+      end: null, // required
+      start: null, // required
+      period: null, // required
+      aggregation: null, // required
+      join_dataframes: null, // required
+      variables: [] // required
+    },
+    async populate(data) {
+      this.data = data;
+    },
+  }),
 };
