@@ -1,6 +1,6 @@
 {
   "name": "ubidots-node",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Unofficial Ubidots NodeJS API Client",
   "main": "src/ubidots.js",
   "scripts": {
