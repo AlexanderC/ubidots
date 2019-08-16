@@ -55,7 +55,7 @@ class Ubidots {
       this._api[namespace],
       this.token,
       this.key,
-      this.opts
+      this.opts,
     );
   }
 
@@ -113,7 +113,7 @@ class Ubidots {
         retries: 5,
         factor: 1.4,
         minTimeout: 500,
-      }
+      },
     };
   }
 }

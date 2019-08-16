@@ -1,8 +1,9 @@
 module.exports.interpolate = (template, vars) => {
   for (const key in vars) {
     template = template.replace(
-      new RegExp(`{\s*${key}\s*}`, 'ig'),
-      vars[key]
+      // eslint-disable-next-line no-useless-escape
+      new RegExp(`{\s*${ key }\s*}`, 'ig'),
+      vars[key],
     );
   }
 

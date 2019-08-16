@@ -1,0 +1,42 @@
+{
+  "env": {
+    "node": true
+  },
+  "plugins": [],
+  "extends": "airbnb-base",
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module"
+  },
+  "rules": {
+    "indent": ["error", 2],
+    "linebreak-style": ["error", "unix"],
+    "quotes": ["error", "single"],
+    "semi": ["error", "always"],
+    "comma-dangle": ["warn"],
+    "camelcase": [0],
+    "no-plusplus": [0],
+    "no-restricted-globals": [0],
+    "no-underscore-dangle": [0],
+    "no-trailing": 0,
+    "no-trailing-spaces": 0,
+    "radix": 0,
+    "import/no-dynamic-require": 0,
+    "template-curly-spacing": ["warn", "always"],
+    "no-restricted-syntax": 0,
+    "class-methods-use-this": 0,
+    "prefer-const": "warn",
+    "array-bracket-spacing": 0,
+    "no-await-in-loop": 0,
+    "global-require": 0,
+    "guard-for-in": 0,
+    "no-shadow": 0,
+    "no-param-reassign": 0,
+    "no-else-return": 0,
+    "consistent-return": 0,
+    "import/no-unresolved": 0,
+    "no-prototype-builtins": 0,
+    "max-len": [ "warn", { "code": 120 } ]
+  }
+}

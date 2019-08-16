@@ -7,7 +7,7 @@ const ApiBase = {
 };
 
 module.exports.ApiBase = ApiBase;
-module.exports.api = baseURL => {
+module.exports.api = (baseURL) => {
   const api = {};
 
   for (const namespace in definitions) {
@@ -16,7 +16,7 @@ module.exports.api = baseURL => {
     for (const name in definitions[namespace]) {
       api[namespace][name] = mergeOptions(
         { baseURL },
-        definitions[namespace][name]
+        definitions[namespace][name],
       );
     }
   }

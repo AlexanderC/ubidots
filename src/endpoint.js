@@ -32,7 +32,7 @@ class Endpoint {
       this.definition,
       this.token,
       this.key,
-      ...args
+      ...args,
     );
 
     debug(`call:${ name }`, opts);

@@ -17,32 +17,30 @@ async function build(def, authToken = null, apiKey = null, ...args) {
     opts.headers['X-Ubidots-ApiKey'] = apiKey;
   }
 
-  if (opts.populate && typeof opts.populate == 'function') {
+  if (opts.populate && typeof opts.populate === 'function') {
     await opts.populate.call(opts, ...args);
   }
 
   return opts;
 }
 
-module.exports = ext => {
-  return mergeOptions({
-    basepath: 'api/v1.6',
-    method: 'GET',
-    path: '',
-    useAPIKey: false,
-    headers: {
-      'X-Auth-Token': '',
-      'X-Ubidots-ApiKey': ''
-    },
-    async populate(opts) {
-      if (this.method.toLowerCase() === 'get') {
-        this.params = opts || {};
-      } else {
-        this.data = opts || {};
-      }
-    },
-    build,
-    validateStatus: Response.isStatusOk,
-    process: data => data,
-  }, ext);
-};
+module.exports = ext => mergeOptions({
+  basepath: 'api/v1.6',
+  method: 'GET',
+  path: '',
+  useAPIKey: false,
+  headers: {
+    'X-Auth-Token': '',
+    'X-Ubidots-ApiKey': '',
+  },
+  async populate(opts) {
+    if (this.method.toLowerCase() === 'get') {
+      this.params = opts || {};
+    } else {
+      this.data = opts || {};
+    }
+  },
+  build,
+  validateStatus: Response.isStatusOk,
+  process: data => data,
+}, ext);
