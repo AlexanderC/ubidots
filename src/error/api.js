@@ -32,7 +32,11 @@ class ApiError extends BaseError {
             const issues = [];
 
             for (const field in error.response.data) {
-              issues.push(`${field} (${error.response.data[field].join(', ')})`);
+              issues.push(`${field} (${
+                Array.isArray(error.response.data[field]) 
+                  ? error.response.data[field].join(', ')
+                  : error.response.data[field]
+                })`);
             }
 
             msg = `Invalid payload data- ${issues.join(', ')}`;
