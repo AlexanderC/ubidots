@@ -57,4 +57,16 @@ module.exports = {
       this.url = interpolate(this.url, { id });
     },
   }),
+  getUsers: endpoint({
+    path: 'organizations/{id}/users?page={page}',
+    async populate({ id, page = 1 }) {
+      this.url = interpolate(this.url, { id, page });
+    },
+  }),
+  getDevices: endpoint({
+    path: 'datasources/?organization_id={id}&page={page}',
+    async populate({ id, page = 1 }) {
+      this.url = interpolate(this.url, { id, page });
+    },
+  }),
 };
