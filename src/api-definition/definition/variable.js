@@ -19,7 +19,10 @@ module.exports = {
     },
   }),
   list: endpoint({
-    path: 'variables',
+    path: 'variables?page_size={pageSize}&page={page}',
+    async populate({ pageSize = 100, page = 1 }) {
+      this.url = interpolate(this.url, { pageSize, page });
+    }
   }),
   read: endpoint({
     path: 'variables/{id}',
