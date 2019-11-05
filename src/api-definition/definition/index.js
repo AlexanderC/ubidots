@@ -1,5 +1,6 @@
 const auth = require('./auth');
 const organization = require('./organization');
+const dashboard = require('./dashboard');
 const datasource = require('./datasource');
 const device = require('./device');
 const user = require('./user');
@@ -11,6 +12,7 @@ module.exports = {
   organization,
   user, 
   datasource,
+  dashboard,
   device,
   variable,
   utils,
