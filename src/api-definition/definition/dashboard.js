@@ -15,19 +15,28 @@ module.exports = {
       this.data = data;
     },
   }),
+  patch: endpoint({
+    path: 'dashboards/{id}',
+    method: 'PATCH',
+    data: {
+      organziation: null,
+    },
+    async populate(id, data) {
+      this.url = interpolate(this.url, { id });
+
+      this.data = data;
+    },
+  }),
   sendInvite: endpoint({
     path: 'users/{id}',
     method: 'PATCH',
     data: {
-      email: null,
-      username: null,
-      custom_username: null,
-      sendInvitation: null,
+      sendInvitation: true,
       invitation: {
         subject: null,
         message: null,
         expires: null,
-        change_password: null,
+        change_password: true,
         app: null,
       },
     },
