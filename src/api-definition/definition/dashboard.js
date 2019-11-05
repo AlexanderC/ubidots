@@ -19,15 +19,12 @@ module.exports = {
     path: 'users/{id}',
     method: 'PATCH',
     data: {
-      email: null,
-      username: null,
-      custom_username: null,
-      sendInvitation: null,
+      sendInvitation: true,
       invitation: {
         subject: null,
         message: null,
         expires: null,
-        change_password: null,
+        change_password: true,
         app: null,
       },
     },
