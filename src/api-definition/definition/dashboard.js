@@ -40,8 +40,10 @@ module.exports = {
         app: null,
       },
     },
-    async populate(id) {
+    async populate(id, data) {
       this.url = interpolate(this.url, { id });
+
+      this.data = data;
     },
   }),
 };
