@@ -48,6 +48,7 @@ Available APIs:
 - `organization` - Missing docs
 - `user` - Missing docs
 - `datasource` - [Datasources](https://ubidots.com/docs/sw/#tag/Datasources)
+- `dashboard` - Missing docs
 - `device` - [Devices](https://ubidots.com/docs/sw/#tag/Devices)
 - `variable` - [Variables](https://ubidots.com/docs/sw/#tag/Variables)
 - `utils` - [Utils](https://ubidots.com/docs/sw/#tag/Utils)
