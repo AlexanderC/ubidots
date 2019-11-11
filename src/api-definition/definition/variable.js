@@ -19,9 +19,9 @@ module.exports = {
     },
   }),
   list: endpoint({
-    path: 'variables?page_size={pageSize}&page={page}',
-    async populate({ pageSize = 100, page = 1 }) {
-      this.url = interpolate(this.url, { pageSize, page });
+    path: 'variables?page_size={pageSize}&page={page}&search__icontains={searchTerm}',
+    async populate({ pageSize = 100, page = 1, searchTerm = '' }) {
+      this.url = interpolate(this.url, { pageSize, page, searchTerm });
     }
   }),
   read: endpoint({
