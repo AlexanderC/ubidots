@@ -3,7 +3,7 @@ const definitions = require('./definition');
 
 const ApiBase = {
   Educational: 'https://things.ubidots.com',
-  Industrial: 'https://industrial.ubidots.com',
+  Industrial: 'https://industrial.api.ubidots.com',
 };
 
 module.exports.ApiBase = ApiBase;
